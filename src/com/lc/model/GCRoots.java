@@ -20,6 +20,7 @@ public enum GCRoots {
 	}
 	
 	/**
+	 * 获取引用对象
 	 * 使用单例确保正确初始化
 	 * @return
 	 */
@@ -27,5 +28,9 @@ public enum GCRoots {
 		if(reference == null)
 			reference = new HeapObject[referenceNumber];
 		return reference;
+	}
+	
+	public void setReference(HeapObject[] reference) {
+		this.reference = reference;
 	}
 }

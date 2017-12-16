@@ -4,7 +4,12 @@ package com.lc.model;
  * 堆里的对象
  * @author lc
  */
-public class HeapObject {
+public class HeapObject implements Cloneable {
+
+	/**
+	 * 复制是否完成
+	 */
+	public boolean COPIED = false;
 
 	/**
 	 * 占用堆的大小
@@ -31,4 +36,14 @@ public class HeapObject {
 		this.position = position;
 	}
 	
+	@Override
+	public Object clone() {
+		HeapObject obj = null;
+		try {
+			obj = (HeapObject) super.clone();
+		} catch (CloneNotSupportedException e) {
+			e.printStackTrace();
+		}
+		return obj;
+	}
 }
