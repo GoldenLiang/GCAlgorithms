@@ -30,6 +30,11 @@ public class HeapObject implements Cloneable {
 	 * 子对象
 	 */
 	public HeapObject[] children;
+
+	/**
+	 * forwarding 指针
+	 */
+	public int forwarding;
 	
 	public HeapObject(int size, int position) {
 		this.size = size;
