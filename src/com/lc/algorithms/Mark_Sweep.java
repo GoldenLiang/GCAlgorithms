@@ -3,6 +3,8 @@ package com.lc.algorithms;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
+import com.lc.Exception.AllocationException;
 import com.lc.model.GCRoots;
 import com.lc.model.HeapObject;
 
@@ -66,8 +68,9 @@ public class Mark_Sweep {
 	 * 分配函数
 	 * @param size 
 	 * @return
+	 * @throws AllocationException 
 	 */
-	public HeapObject new_obj(int size) {
+	public HeapObject new_obj(int size) throws AllocationException {
 		HeapObject chunk = pickup_chunk(size, freeList);
 		if(chunk != null) {
 			return chunk;
@@ -96,10 +99,11 @@ public class Mark_Sweep {
 	}
 
 	/**
-	 * TODO:分配失败时执行的函数
+	 * 分配失败函数
+	 * @throws AllocationException 
 	 */
-	private void allocation_fail() {
-		
+	private void allocation_fail() throws AllocationException {
+		throw new AllocationException("分配分块失败");
 	}
 	
 	/**

@@ -34,7 +34,22 @@ public class HeapObject implements Cloneable {
 	/**
 	 * forwarding 指针
 	 */
-	public int forwarding;
+	public int forwarding = Integer.MAX_VALUE;
+
+	/**
+	 * 分代回收算法中，是否被记录到记录集
+	 */
+	public boolean remebered;
+	
+	/**
+	 * 分代回收算法中，对象的年龄
+	 */
+	public int age;
+
+	/**
+	 * 分代回收算法中，对象是否有指向对象
+	 */
+	public boolean forwarded;
 	
 	public HeapObject(int size, int position) {
 		this.size = size;
